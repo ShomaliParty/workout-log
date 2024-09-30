@@ -1,0 +1,12 @@
+<h1>History</h1>
+<div *ngFor="let workout of history">
+    <h2 (click)="toggleShowWorkout(workout.date)">{{ workout.date }}</h2>
+    <div *ngFor="let lift of workout.lifts">
+        <div *ngIf="this.selectedWorkoutDate === workout.date">
+            <h3>{{ lift.name }}</h3>
+            <p>{{ lift.weight }}</p>
+            <p>{{ lift.sets }} x {{ lift.reps }}</p>
+            <br>
+        </div>
+    </div>
+</div>
