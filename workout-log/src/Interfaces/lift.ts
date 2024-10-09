@@ -4,6 +4,3 @@ export interface Lift {
     sets: string;
     reps: string;
   }
-
-  //test
-  
