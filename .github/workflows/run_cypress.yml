@@ -22,4 +22,4 @@ jobs:
         run: yarn install # use 'npm install' if you prefer npm
 
       - name: Run Cypress tests
-        run: npx cypress run --spec '../*.cy.{js,jsx,ts,tsx}' # Adjust the glob pattern here
+        run: npx cypress run --spec '../cypress/E2E/*.cy.{js,jsx,ts,tsx}' # Adjust the glob pattern here
