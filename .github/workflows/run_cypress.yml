@@ -3,7 +3,7 @@ name: Cypress Tests on PR
 on:
   pull_request:
     branches:
-      - workout-log # Use your specific branch name for PRs
+      - main  # Original branch name
 
 jobs:
   cypress:
@@ -16,12 +16,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' # specify your Node.js version here
+          node-version: '14'  # specify your Node.js version here
 
       - name: Install dependencies
-        run: yarn install # use 'npm install' if you prefer npm
-        working-directory: workout-log # Set working directory
+        run: yarn install  # use 'npm install' if you prefer npm
+        working-directory: workout-log  # Set working directory
 
       - name: Run Cypress tests
-        run: npx cypress run # Run Cypress without additional flags
-        working-directory: workout-log # Set working directory
+        run: npx cypress run  # Run Cypress without additional flags
+        working-directory: workout-log  # Set working directory
