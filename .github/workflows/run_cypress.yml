@@ -1,27 +1,25 @@
-name: Cypress Tests on PR
+name: Run Cypress Tests
 
 on:
   pull_request:
     branches:
-      - main  # Original branch name
+      - main
 
 jobs:
-  cypress:
+  test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'  # Update to a compatible Node.js version
-
       - name: Install dependencies
-        run: yarn install  # use 'npm install' if you prefer npm
-        working-directory: workout-log  # Set working directory
+        run: yarn install
+        working-directory: workout-log
+
+      - name: Start Angular server
+        run: yarn ng serve --port 4200 --host 0.0.0.0 --disable-host-check &
+        working-directory: workout-log
 
       - name: Run Cypress tests
-        run: npx cypress run  # Run Cypress without additional flags
-        working-directory: workout-log  # Set working directory
+        run: npx cypress run
+        working-directory: workout-log
