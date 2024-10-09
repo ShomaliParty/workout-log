@@ -12,9 +12,9 @@ export class LiftService {
   getEmptyLift(): Lift {
     return {
       name: '',
-      weight: 0,
-      sets: 0,
-      reps: 0
+      weight: '',
+      sets: '',
+      reps: ''
     }
   }
 

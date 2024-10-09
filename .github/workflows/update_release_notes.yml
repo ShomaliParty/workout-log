@@ -1,0 +1,44 @@
+name: Update releaseNotes
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  update-release-notes:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Get merge commit message and date
+        id: extract
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          MERGE_DATE=$(date +'%Y-%m-%d')
+          echo "commit_message<<EOF" >> $GITHUB_ENV
+          echo "${COMMIT_MSG}" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          echo "merge_date=${MERGE_DATE}" >> $GITHUB_ENV
+
+      - name: Update README.md
+        run: |
+          echo "=====" >> README.md
+          echo "$merge_date" >> README.md
+          echo "$commit_message" >> README.md
+          echo "" >> README.md
+
+
+      - name: Commit and push changes
+        run: |
+          git add README.md
+          git commit -m "Update release notes"
+          git push

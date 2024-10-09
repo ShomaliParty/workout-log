@@ -1,6 +1,6 @@
 export interface Lift {
     name: string;
-    weight: number;
-    sets: number;
-    reps: number;
+    weight: string;
+    sets: string;
+    reps: string;
   }
