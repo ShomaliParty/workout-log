@@ -1,0 +1,25 @@
+name: Run Cypress Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+        working-directory: workout-log
+
+      - name: Start Angular server
+        run: yarn ng serve --port 4200 --host 0.0.0.0 --disable-host-check &
+        working-directory: workout-log
+
+      - name: Run Cypress tests
+        run: npx cypress run
+        working-directory: workout-log
