@@ -1,4 +1,5 @@
 // cypress/e2e/workout.spec.js
+import { EXERCISE_NAMES } from '../../src/Const/exercise_utils'
 
 // helper assets
 const Routes = Object.freeze({
@@ -24,16 +25,16 @@ describe('Workout Log App', () => {
   });
 
   it('should navigate to logger, add a lift, save the workout, and display it in history', () => {
-    const liftName = 'Bench Press';
+    const liftName = EXERCISE_NAMES[Math.floor(Math.random())];
     const liftWeight = '150';
     const liftSets = '3';
     const liftReps = '10';
   
     cy.contains('START LOGGING').click();
-    cy.get('input[name="name"]').type(liftName);
-    cy.get('input[name="weight"]').type(liftWeight);
-    cy.get('input[name="sets"]').type(liftSets);
-    cy.get('input[name="reps"]').type(liftReps);
+    cy.get('input[formControlName="name"]').type(liftName);
+    cy.get('input[formControlName="weight"]').type(liftWeight);
+    cy.get('input[formControlName="sets"]').type(liftSets);
+    cy.get('input[formControlName="reps"]').type(liftReps);
   
     cy.contains('Add lift').click();
     checkLiftExists(liftName, liftWeight, liftSets, liftReps);

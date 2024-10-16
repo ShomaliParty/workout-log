@@ -1,25 +1,11 @@
-:host {
-    display: block; // Make sure the host is a block element
-    position: relative; // Relative positioning for proper button placement
-  }
-  
-  // Style for the button
-  .home-button {
-    position: fixed; // Use fixed positioning to keep the button in view
-    top: 10px; // Distance from the top
-    left: 10px; // Distance from the left
-    z-index: 10; // Ensure the button is above other elements
-    padding: 10px 15px; // Add padding for better click area
-    background-color: #007bff; // Optional: button color
-    color: white; // Optional: text color
-    border: none; // Optional: no border
-    border-radius: 5px; // Optional: rounded corners
-    cursor: pointer; // Change cursor on hover
-  }
-  
-  // Style for the router outlet to prevent overlap
-  router-outlet {
-    display: block; // Ensure it behaves as a block element
-    margin-top: 60px; // Margin to push content down, adjust as needed
-  }
-  
+.home-button {
+  display: block;
+  margin-top: 16px;
+  position: relative;
+  z-index: 10;
+}
+
+router-outlet {
+  display: block;
+  margin-top: 16px;
+}
