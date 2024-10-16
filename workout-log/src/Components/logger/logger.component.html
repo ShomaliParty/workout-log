@@ -1,16 +1,42 @@
-<label>Lift name</label><br>
-<input type="text" id="name" name="name" [(ngModel)]="this.lift.name"><br><br>
-<label>Weight</label><br>
-<input type="text" id="weight" name="weight" [(ngModel)]="this.lift.weight"><br><br>
-<label>Sets</label><br>
-<input type="text" id="sets" name="sets"[(ngModel)]="this.lift.sets"><br><br>
-<label>Reps</label><br>
-<input type="text" id="reps" name="reps" [(ngModel)]="this.lift.reps"><br><br>
-<button type="button" (click)="addLift()">Add lift</button><br>
-<div *ngFor="let lift of workout.lifts">
-    <h3>{{ lift.name }}</h3>
-    <p>{{ lift.weight }}</p>
-    <p>{{ lift.sets }} x {{ lift.reps }}</p>
-    <br>
-</div>
-<button type="button" (click)="saveWorkout()">Save workout</button>
+<form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Lift name</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        [matAutocomplete]="auto"/>
+      <mat-autocomplete #auto="matAutocomplete">
+        <ng-container *ngFor="let option of filteredOptions | async">
+          <mat-option [value]="option">{{ option }}</mat-option>
+        </ng-container>
+      </mat-autocomplete>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Weight</mat-label>
+      <input matInput type="text" formControlName="weight" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Sets</mat-label>
+      <input matInput type="text" formControlName="sets" />
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Reps</mat-label>
+      <input matInput type="text" formControlName="reps" />
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" (click)="addLift()">Add lift</button>
+  
+    <div *ngFor="let lift of workout.lifts; let i = index">
+      <h3 *ngIf="!isNameDisplayed(lift.name, i)">{{ lift.name }}</h3>
+      <p>{{ lift.weight }}</p>
+      <p>{{ lift.sets }} x {{ lift.reps }}</p>
+      <br />
+    </div>
+  
+    <button mat-raised-button color="accent" (click)="saveWorkout()">Save workout</button>
+  </form>
+  
