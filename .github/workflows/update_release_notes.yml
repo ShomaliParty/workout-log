@@ -51,7 +51,6 @@ jobs:
           echo "$release_type" >> README.md
           echo "" >> README.md
           echo "$commit_message" >> README.md
-          echo "===========" >> README.md
 
 
       - name: Commit and push changes
