@@ -24,18 +24,32 @@ jobs:
         run: |
           COMMIT_MSG=$(git log -1 --pretty=%B)
           MERGE_DATE=$(date +'%Y-%m-%d')
+          BRANCH_NAME="${GITHUB_HEAD_REF}"
           echo "commit_message<<EOF" >> $GITHUB_ENV
           echo "${COMMIT_MSG}" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
           echo "merge_date=${MERGE_DATE}" >> $GITHUB_ENV
+          echo "branch_name=${BRANCH_NAME}" >> $GITHUB_ENV
+
+      - name: Set release type based on branch
+        id: set-release-type
+        run: |
+          BRANCH_NAME="${{ env.branch_name }}"
+          if [[ "$BRANCH_NAME" == fix/* || "$BRANCH_NAME" == hotfix/* ]]; then
+            echo "release_type=FIX" >> $GITHUB_ENV
+          elif [[ "$BRANCH_NAME" == feature/* ]]; then
+            echo "release_type=FEATURE" >> $GITHUB_ENV
+          else
+            echo "release_type=OTHER" >> $GITHUB_ENV
+          fi
 
       - name: Update README.md
         run: |
           echo "=====" >> README.md
           echo "$merge_date" >> README.md
+          echo "$release_type" >> README.md
           echo "$commit_message" >> README.md
           echo "" >> README.md
-
 
       - name: Commit and push changes
         run: |
