@@ -41,10 +41,13 @@ describe('Workout Log App', () => {
 
     cy.contains('Save workout').click();
     cy.get('button').contains('Home').click();
-  
+
     cy.contains('VIEW LOGS').click();
     cy.contains('History').should('be.visible');
-    cy.get('h2').first().click();
+    cy.get('button')
+      .not(':contains("Home")')
+      .first()
+      .click();
     checkLiftExists(liftName, liftWeight, liftSets, liftReps);
   });
   
