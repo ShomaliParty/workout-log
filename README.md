@@ -50,3 +50,11 @@ rm unused import
 Merge pull request #9 from ShomaliParty/fix/reordering_imports
 
 reorder import
+===========
+
+2024-11-12
+[FEATURE]
+
+Merge pull request #10 from ShomaliParty/feature/UI_stuff
+
+Buncha work and UI stuff
