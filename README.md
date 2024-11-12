@@ -33,3 +33,12 @@ Merge pull request #7 from ShomaliParty/feature/test
 
 rm unused import
 
+===========
+
+2024-11-12
+[FIX]
+
+Merge pull request #8 from ShomaliParty/fix/rmUnusedImport
+
+rm unused import
+===========
