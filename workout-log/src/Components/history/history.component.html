@@ -1,6 +1,6 @@
 <h1>History</h1>
 <div *ngFor="let workout of history">
-    <h2 (click)="toggleShowWorkout(workout.date)">{{ workout.date }}</h2>
+    <button mat-raised-button color="primary" (click)="toggleShowWorkout(workout.date)" class="button">{{ workout.date }}</button>
     <div *ngFor="let lift of workout.lifts">
         <div *ngIf="this.selectedWorkoutDate === workout.date">
             <h3>{{ lift.name }}</h3>

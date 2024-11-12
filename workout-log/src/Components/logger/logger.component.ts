@@ -76,6 +76,7 @@ export class LoggerComponent {
   saveWorkout(): void {
     this.loggerService.saveWorkout(this.workout);
     this.workout = this.liftService.getEmptyWorkout();
+    this.form.reset();
   }
 
   isNameDisplayed(name: string, currentIndex: number): boolean {

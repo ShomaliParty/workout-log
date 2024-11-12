@@ -1,11 +1,21 @@
-.home-button {
-  display: block;
-  margin-top: 16px;
-  position: relative;
-  z-index: 10;
+/* Ensure the entire body uses a full height layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
 }
 
-router-outlet {
-  display: block;
-  margin-top: 16px;
+.app-container {
+  flex: 1; /* Allow the container to grow to fill available space */
+  display: flex;
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+  margin-top: 10px;
+}
+
+.home-button {
+  position: absolute; /* Make sure the button is positioned outside the flex layout */
+  top: 10px;
+  left: 10px;
 }
