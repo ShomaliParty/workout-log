@@ -36,20 +36,23 @@ jobs:
         run: |
           BRANCH_NAME="${{ env.branch_name }}"
           if [[ "$BRANCH_NAME" == fix/* || "$BRANCH_NAME" == hotfix/* ]]; then
-            echo "release_type=FIX" >> $GITHUB_ENV
+            echo "release_type=[FIX]" >> $GITHUB_ENV
           elif [[ "$BRANCH_NAME" == feature/* ]]; then
-            echo "release_type=FEATURE" >> $GITHUB_ENV
+            echo "release_type=[FEATURE]" >> $GITHUB_ENV
           else
-            echo "release_type=OTHER" >> $GITHUB_ENV
+            echo "release_type=[OTHER]" >> $GITHUB_ENV
           fi
 
       - name: Update README.md
         run: |
-          echo "=====" >> README.md
+          echo "===========" >> README.md
+          echo "" >> README.md
           echo "$merge_date" >> README.md
           echo "$release_type" >> README.md
-          echo "$commit_message" >> README.md
           echo "" >> README.md
+          echo "$commit_message" >> README.md
+          echo "===========" >> README.md
+
 
       - name: Commit and push changes
         run: |
