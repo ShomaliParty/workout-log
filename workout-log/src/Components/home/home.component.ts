@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+  // changes in home.component.ts!
   
   constructor(private router: Router) {}
   
