@@ -2,6 +2,8 @@ name: Detect Angular Changes
 
 on:
   pull_request:
+    branches:
+      - main
 
 jobs:
   detect-changes:
