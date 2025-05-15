@@ -1,0 +1,25 @@
+name: Detect Angular Changes
+
+on:
+  pull_request:
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run detection script
+        id: detect
+        run: |
+          chmod +x workout-log/scripts/components_changed.sh
+          workout-log/scripts/components_changed.sh
+
+      - name: Log changed files
+        run: |
+          echo "components changed by this PR: ${{ steps.detect.outputs.components_changed }}"
+          echo "services changed by this PR: ${{ steps.detect.outputs.services_changed }}"
+          echo "other files changed by this PR: ${{ steps.detect.outputs.others_changed }}"
