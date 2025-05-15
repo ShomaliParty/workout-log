@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# List changed files compared to main branch
-CHANGED_FILES=$(git diff --name-only origin/main)
+# Use three-dot syntax to compare PR branch to main's latest fetched state
+CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
 
 COMPONENTS=()
 SERVICES=()
