@@ -31,6 +31,7 @@ import { EXERCISE_NAMES, exerciseNameValidator } from '../../Const/exercise_util
   styleUrl: './logger.component.scss'
 })
 export class LoggerComponent {
+  // some modification
   lift: Lift;
   workout: Workout;
   exerciseNames = EXERCISE_NAMES;
