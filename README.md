@@ -58,3 +58,11 @@ reorder import
 Merge pull request #10 from ShomaliParty/feature/UI_stuff
 
 Buncha work and UI stuff
+===========
+
+2025-05-15
+[OTHER]
+
+Merge pull request #11 from ShomaliParty/components_changed
+
+components changed
