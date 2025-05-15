@@ -1,4 +1,4 @@
-name: Detect Angular Changes
+name: Detect Component Changes
 
 on:
   pull_request:
